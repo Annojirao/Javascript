@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		fundamentals of this
+	</title>
+</head>
+<body>
+	<script>
+	    //first example to illustare the this
+		var obj = {
+			ins:function () {
+				return this;
+			}
+		}
+
+		console.log(obj.ins());
+
+       //second example to illustrate the this behavior
+
+       var newObj = {
+       	   newIns: function () {
+       	   	     var localvar = function() {
+       	   	     	return this;
+       	   	     }
+       	   	     return localvar();
+       	   }
+       }
+
+       console.log(newObj.newIns());
+
+
+       //self invoking example
+       var self = {
+		    selfProp: function() {
+		        return (function() {return this;})();
+		    }
+	   };
+	   console.log(self.selfProp());
+
+	   //using call  property
+
+	   var example = {
+	   	    n:'init',
+		    prop: function() {
+		          return this.n;
+		    }
+		};
+
+	   var ins ={'n':'initMod'};
+
+       //console.log(example.prop());
+       //console.log(example.prop.call(ins));
+       //console.log(newObj.newIns.call(ins));
+       
+       //using Function.prototype.apply
+
+
+       console.log(example.prop.apply(ins));
+
+	</script>
+</body>

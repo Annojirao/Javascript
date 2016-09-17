@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		fundamentals of functions
+	</title>
+</head>
+<body>
+	<script>
+
+	// function Private (argument) {
+	// 	// body...
+	// 	//private property
+	// 	var privatevar = 'JavaScript';
+
+	// 	//privileiged method
+	// 	this.getVariable = function  (argument) {
+	// 		// body...
+	// 		console.log(privatevar);
+	// 	}
+	// }
+   
+	// var privateObject = new Private();
+	// console.log("private variable is   "+privateObject.privatevar);
+	// privateObject.getVariable();
+	
+
+	// function Public (name) {
+	// 	//body...
+	// 	//public variable
+	// 	this.publicvar = name;
+
+	// 	this.getPublicvar = function (argument) {
+	// 		// body...
+	// 		console.log("public variable is "+this.publicvar);
+	// 	}
+	// 	//return this;
+	// }
+
+	// var publicObject = new Public('Script');
+ //    console.log("public variable is   "+publicObject.publicvar);
+ //    publicObject.getPublicvar();
+	
+
+
+	//static property
+
+	// function StaticFunction (argument) {
+	// 	// body...
+	// }
+	// StaticFunction.attr = "hello";
+
+ //    var staticObject = new StaticFunction();
+ //    console.log("static attribute is "+staticObject.attr);
+ //    console.log('static attribute reference '+ StaticFunction.attr);
+
+
+
+
+    function PublicVsPrivate (argument) {
+    	// body...
+    	
+        var that = this;
+        this.public = function (argument) {
+    		// body...
+    		console.log('inside public function');
+    		//private();
+    	}
+
+    	var private  = function (argument) {
+    		// body...
+    		console.log('inside private function');
+    		this.public();
+    		//that.public();
+    		//public();
+    	}
+
+    	
+        private.call(this);
+
+    }
+
+    var PublicVsPrivateInstance  = new PublicVsPrivate();
+    PublicVsPrivateInstance.public();
+
+    // function function1 (argument) {
+    // 	// body...
+    // 	fname = "java";
+    // 	this.getFname = function  (argument) {
+    // 		// body...
+    // 		console.log("first name is "+this.fname);
+    // 	}
+
+    // }
+
+    // var mm = new function1();
+    // console.log("object reference  "+mm.fname)
+    // mm.getFname();
+	</script>
+</body>
+</html>

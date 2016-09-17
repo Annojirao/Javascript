@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		fundamentals of Prototypes
+	</title>
+</head>
+<body>
+	<script>
+
+	function ParentFunction (argument) {
+		// body...
+		this.fname = 'Annojirao';
+		this.getFname = function(argument) {
+			// body...
+			console.log(this.fname);
+		}
+	}
+    ParentFunction.prototype.getNewFname = function (argument) {
+    	// body...
+    	console.log('the new fname inside ParentFunction   '+this.fname);
+    }
+	function  ChildFunction(argument) {
+		// body...
+		this.lname= 'DG';
+		this.fname = 'Javascript';
+		this.getLname  = function (argument) {
+			// body...
+			console.log(this.lname);
+		}
+	}
+    //console.log(ParentFunction.prototype);
+	var parentInstance = new ParentFunction();
+	
+	
+	ChildFunction.prototype = Object.create(ParentFunction.prototype);
+
+	ChildFunction.prototype.getNewName = function (argument) {
+		console.log('newlast name is '+"New "+this.lname);
+	}
+
+	 ChildFunction.prototype.getNewFname = function (argument) {
+    	// body...
+    	ParentFunction.prototype.getNewFname.call(this);
+    	console.log('the new name inside ChildFunction    '+this.fname);
+    }
+
+	var childInstance = new ChildFunction();
+
+	console.log(ChildFunction.prototype);
+	parentInstance.getFname();
+	childInstance.getLname();
+	childInstance.getNewName();
+    childInstance.getNewFname();
+    //parentInstance.getNewFname();
+	</script>
+</body>
+</html>

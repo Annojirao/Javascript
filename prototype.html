@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		fundamentals of prototypes
+	</title>
+</head>
+<body>
+	<script>
+
+	// function ProtoTypeExample (argument) {
+	// 	// body...
+	// 	this.name = argument || 'JavaScript';
+	// 	this.getName = function(argument) {
+	// 		// body...
+	// 		console.log("We were working on  "+this.name);
+	// 	}
+	// }
+
+	// var newFun = new ProtoTypeExample();
+	// // var newFun2 = new ProtoTypeExample('KavaScript');
+
+	// console.log(newFun.getName());
+	// // //console.log(newFun2.getName());
+
+	// ProtoTypeExample.prototype.yesterday = function(first_argument) {
+	// 	// body...
+	// 	console.log('JavaScript was growing language');
+	// 	return this;
+	// };
+ //     //newFun.yesterday();
+	// ProtoTypeExample.prototype.today = function(first_argument) {
+	// 	// body...
+	// 	console.log('all browsers runs on JavaScript engine');
+	// 	return this;
+	// };
+
+	// ProtoTypeExample.prototype.tomorrow = function(first_argument) {
+	// 	// body...
+
+	// 	console.log('JavaScript is the most popular language in the world');
+	// };
+    
+	// newFun.yesterday();
+	// newFun.today();
+	// newFun.tomorrow();
+
+	//prototype chaining
+	// newFun.yesterday().today().tomorrow();
+
+    function Parent (argument) {
+    	if(!(this instanceof Parent)){
+    		return new Parent();
+    	}
+    	this.firstName = argument || 'god';
+    	this.getName = function (argument) {
+    		// body...
+    		console.log("name inside constructor is "+this.firstName);
+    	}
+    	// body...
+    }
+
+    Parent.prototype.getName = function(first_argument) {
+    	// body...
+    	console.log('name is '+this.firstName);
+    };
+
+    function Child (argument) {
+    	// body...
+    	Parent.call(this,'javascript');
+
+    }
+    // var parentInstance = new Parent('ECMAScript');
+    // parentInstance.getName();
+    Child.prototype = Object.create(Parent.prototype);
+    var inhritedChild = new Child();
+    inhritedChild.getName();
+
+	</script>
+</body>
+</html>

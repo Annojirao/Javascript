@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		fundamentals of Objects
+	</title>
+</head>
+<body>
+	<script>
+    var oldObject = {
+    	fname:'annojirao',
+    	lname:'DG',
+	    getFirstName: function() {
+	    	console.log("first name is   "+this.fname);
+	    },
+	    getLastName: function() {
+	    	console.log("last name is   "+this.lname);
+	    }
+	};
+
+    var newObject = Object(oldObject);
+	//var newObject = new Object(oldObject);
+	newObject.thirdMethod = function(argument) {
+		// body...
+		console.log('third method called');
+	}
+    var newSecObject = new Object(newObject);
+	newObject.getFirstName();
+	newObject.getLastName();
+    newObject.thirdMethod();
+    
+    newSecObject.thirdMethod = function (argument) {
+    	// body...
+    	console.log('third method is overridden in newSecObject');
+    }
+	newSecObject.thirdMethod();
+
+
+   </script>
+   </body>
+</html>
+
+

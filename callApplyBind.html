@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Call Apply and Bind on objects
+	</title>
+</head>
+<body>
+	<script>
+	var obj = {
+		init:2
+	}
+
+	function AddElements () {
+		// body...
+		//console.log(arguments);
+		var summedValue = 0;
+		for(var i = 0 ; i <arguments.length;i++){
+			 summedValue +=  parseInt(arguments[i]);	
+		}
+		//console.log("summed   "+summedValue);
+		return this.init + summedValue;
+	}
+    
+    //call accepts object on which action should happen and parametes to the function as 2nd, 3rd ....
+    // var resultOnCall = AddElements.call(obj,5,10);
+    // console.log("Result using call method on object   "+resultOnCall);
+
+
+    //apply method accept the obj as first param and the array as the second param which is argument to the function
+	// var resultOnApply = AddElements.apply(obj,[1,2,4]);
+	// console.log("Result using apply method is "+resultOnApply);
+
+ //    //bind will accept the object as arguments and later returns the method
+    var resultOnBind = AddElements.bind(obj);
+    var resultOnBindResult = resultOnBind(1,2,3)
+    console.log("Bind result "+ resultOnBindResult);
+	</script>
+</body>
+</html>

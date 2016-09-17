@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		fundamentals of prototypical inheritance
+	</title>
+</head>
+<body>
+	<script>
+	 function Parent(){
+	 	this.name = "Parent";
+	 	this.getName = function  (argument) {
+	 		// body...
+	 		console.log("name inside the consructor method is:   "+this.name);
+	 	}
+	 }
+
+	 var parentInstance = new Parent();
+	 parentInstance.getName();
+	 Parent.prototype.print = function (argument) {
+	 	// body...
+	 	console.log("Inside print prototype: "+this.name);
+	 }
+     parentInstance.print();
+
+     function Child(){
+     	this.name = "Child";
+    	this.surname = "Child Surname";
+     } 
+     
+     Child.prototype = Object.create(Parent.prototype);
+
+
+
+     Child.prototype.print = function  (argument) {
+	 	// body...
+	 	Parent.prototype.print.call(this);
+	 	console.log(this.surname);
+	 }
+	
+
+	 var childInstance = new Child();
+	 childInstance.print();
+
+	</script>
+</body>
+</html>
